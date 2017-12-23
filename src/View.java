@@ -39,6 +39,7 @@ public class View extends JPanel implements Observer, ActionListener {
 		
 		panel1.setPreferredSize(new Dimension(200, 0));
 		//panel1.setBorder(MyBorderFactory.createMyBorder(" Panel 1 "));
+		System.out.println("Grüezi");
 		
 		panel1.setLayout(new GridBagLayout());
 		// x, y, x-span, y-span, x-weight, y-weight, anchor, fill, insets(int top, int left, int bottom, int right), internal padding x, internal padding y. 
