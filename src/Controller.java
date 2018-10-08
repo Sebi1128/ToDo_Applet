@@ -9,6 +9,15 @@ public class Controller {
 	public Controller(Model model) {
 		this.model = model;
 	}
+	
+	
+	public void readStuff() {
+		model.readStuff();
+	}
+	
+	public void writeStuff() {
+		model.writeStuff();
+	}
 
 	
 
