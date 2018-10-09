@@ -12,7 +12,7 @@ public class Taschenrechner extends JFrame {
 	public Taschenrechner() {
 		Model model = new Model();
 		Controller controller = new Controller(model);
-		View view = new View(controller);
+		TopView view = new TopView(controller);
 		model.addObserver(view);
 		
 		getContentPane().add(view);
