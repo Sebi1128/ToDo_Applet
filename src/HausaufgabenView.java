@@ -53,7 +53,7 @@ public class HausaufgabenView extends JPanel implements Observer, ActionListener
 		//setBorder(MyBorderFactory.createMyBorder(" GridBagLayoutPanel "));
 		this.controller = ctrl;
 
-		
+		controller.readStuff();
 //		panel1.setPreferredSize(new Dimension(200, 50));
 //		//panel1.setBorder(MyBorderFactory.createMyBorder(" Panel 1 "));
 //		
@@ -79,6 +79,7 @@ public class HausaufgabenView extends JPanel implements Observer, ActionListener
 		panel4.setLayout(new GridBagLayout());
 		panel4.setBorder(MyBorderFactory.createMyBorder(" Monday "));
 		JScrollPane scrollPane1=new JScrollPane(tfMonday);
+		tfMonday.setText(controller.getTextHausaufgaben());
 		panel4.add(scrollPane1, new GridBagConstraints(0, 1, 1, 1, 1.0, 1.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH,
 		new Insets(10, 10, 10, 10), 0, 0));
 		add(panel4, new GridBagConstraints(0,1,1,1,1.0,1.0,GridBagConstraints.CENTER, GridBagConstraints.BOTH,new Insets(10,10,10,10),0,0));
@@ -127,6 +128,7 @@ public class HausaufgabenView extends JPanel implements Observer, ActionListener
 		panel3.setPreferredSize(new Dimension(0, 50));
 		panel3.setLayout(new GridBagLayout());
 		panel3.setBorder(MyBorderFactory.createMyBorder(""));
+		btSave.addActionListener(this);
 		panel3.add(btSave, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0, GridBagConstraints.NORTHWEST, GridBagConstraints.BOTH,
 				new Insets(10, 10, 10, 10), 0, 0));
 		add(panel3, new GridBagConstraints(0,2,5,1,1.0,1.0,GridBagConstraints.CENTER, GridBagConstraints.BOTH,new Insets(10,10,10,10),0,0));
@@ -171,8 +173,8 @@ public class HausaufgabenView extends JPanel implements Observer, ActionListener
 	public void actionPerformed(ActionEvent e) {
 		
 		System.out.println("Grüezi");
-		controller.writeStuff();
-		controller.readStuff();
+		save();
+		//controller.readStuff();
 	}
 
 	public void update(Observable modelObject, Object dataObject) {
@@ -192,5 +194,18 @@ public class HausaufgabenView extends JPanel implements Observer, ActionListener
 	@Override
 	public void keyTyped(KeyEvent arg0) {
 		System.out.println("Type");
+	}
+	
+	public void save(){
+		String schtring = null;
+		
+		schtring = tfMonday.getText();
+		schtring += tfTuesday.getText();
+		schtring += tfWednesday.getText();
+		schtring += tfThursday.getText();
+		schtring += tfFriday.getText();
+		controller.saveTextFromHausaufgaben(schtring);
+		controller.saveData();
+		return;
 	}
 }

@@ -165,7 +165,7 @@ public class SonstigesView extends JPanel implements Observer, ActionListener, K
 	public void actionPerformed(ActionEvent e) {
 		
 		System.out.println("Grüezi");
-		controller.writeStuff();
+		//saveData();
 		controller.readStuff();
 	}
 

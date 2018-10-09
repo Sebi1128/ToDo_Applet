@@ -165,7 +165,7 @@ public class PruefungenView extends JPanel implements Observer, ActionListener, 
 	public void actionPerformed(ActionEvent e) {
 		
 		System.out.println("Grüezi");
-		controller.writeStuff();
+		//saveData();
 		controller.readStuff();
 	}
 
@@ -187,4 +187,6 @@ public class PruefungenView extends JPanel implements Observer, ActionListener, 
 	public void keyTyped(KeyEvent arg0) {
 		System.out.println("Type");
 	}
+	
+
 }

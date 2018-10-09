@@ -11,6 +11,9 @@ import java.util.Observable;
 
 public class Model extends Observable {
 
+	private String schtringHausaufgaben = "";
+	private String schtringPuefungen = "";
+	private String schtringSonstiges = "";
 
 	
 	public void notifyObservers() {
@@ -21,7 +24,6 @@ public class Model extends Observable {
 	
 	
 	public void readStuff() {
- 
 		String filename = "temp.txt";
 		String workingDirectory = System.getProperty("user.dir");
 			
@@ -45,12 +47,24 @@ public class Model extends Observable {
             BufferedReader bufferedReader = 
                 new BufferedReader(fileReader);
 
+            int i = 0;
             while((line = bufferedReader.readLine()) != null) {
-                System.out.println(line);
-            }   
+            	if (line.equals("----------THIS_IS_A_NEW_TAB---------")) {
+            		i++;
+            	}
+            	else if(i==0) {
+            		schtringHausaufgaben += line;
+            	}
+            	else if(i==1) {
+            		schtringPuefungen += line;
+            	}
+            	else if(i==2) {
+            		schtringSonstiges += line;
+            	}
+            }
 
             // Always close files.
-            bufferedReader.close();         
+            bufferedReader.close();
         }
         catch(FileNotFoundException ex) {
             System.out.println(
@@ -67,7 +81,7 @@ public class Model extends Observable {
 	}
 	
 	
-	public void writeStuff() {        
+	public void saveData() {        
         String filename = "temp.txt";
 		String workingDirectory = System.getProperty("user.dir");
 			
@@ -79,24 +93,31 @@ public class Model extends Observable {
 		absoluteFilePath = workingDirectory + File.separator + filename;
 
 		System.out.println("Final filepath : " + absoluteFilePath);
-
+		
         try {
             // Assume default encoding.
             FileWriter fileWriter =
                 new FileWriter(absoluteFilePath);
-
+            
             // Always wrap FileWriter in BufferedWriter.
             BufferedWriter bufferedWriter =
                 new BufferedWriter(fileWriter);
-
+            
             // Note that write() does not automatically
             // append a newline character.
-            bufferedWriter.write("Hello there,");
-            bufferedWriter.write(" here is some text.");
+            
+            bufferedWriter.write(schtringHausaufgaben);
             bufferedWriter.newLine();
-            bufferedWriter.write("We are writing");
-            bufferedWriter.write(" the text to the file.");
-
+            bufferedWriter.write("----------THIS_IS_A_NEW_TAB---------");
+            
+            bufferedWriter.write(schtringPuefungen);
+            bufferedWriter.newLine();
+            bufferedWriter.write("----------THIS_IS_A_NEW_TAB---------");
+            
+            bufferedWriter.write(schtringSonstiges);
+            bufferedWriter.newLine();
+            bufferedWriter.write("----------THIS_IS_A_NEW_TAB---------");
+            
             // Always close files.
             bufferedWriter.close();
         }
@@ -107,6 +128,24 @@ public class Model extends Observable {
             // Or we could just do this:
             // ex.printStackTrace();
         }
+	}
+
+
+
+	public void setTextFromHausaufgaben(String schtring) {
+		schtringHausaufgaben = schtring;
+	}
+	
+	public String getTextHausaufgaben() {
+		return schtringHausaufgaben;
+	}
+	
+	public String getTextPruefungen() {
+		return schtringPuefungen;
+	}
+	
+	public String getTextSonstiges() {
+		return schtringSonstiges;
 	}
 
 }

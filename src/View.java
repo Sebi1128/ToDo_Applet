@@ -98,7 +98,7 @@ public class View extends JPanel implements Observer, ActionListener, KeyListene
 	public void actionPerformed(ActionEvent e) {
 		
 		System.out.println("Grüezi");
-		controller.writeStuff();
+		//controller.saveData();
 		controller.readStuff();
 	}
 
