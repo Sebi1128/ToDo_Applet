@@ -88,6 +88,7 @@ public class View extends JPanel implements Observer, ActionListener, KeyListene
 		add(panel4, new GridBagConstraints(2, 0, 1, 2, 1.0, 1.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH,
 				new Insets(10, 10, 10, 10), 0, 0));
 		
+		
 		// x, y, x-span, y-span, x-weight, y-weight, anchor, fill, insets(int top, int left, int bottom, int right), internal padding x, internal padding y. 
 		// x-weight, y-weight: 	Geben an wie die ZELLEN in x resp. y - Richtung wachsen!
 		// anchor:				Gibt an, wie die Komponente innerhab der zugehörigen Zellen verankert ist!

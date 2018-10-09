@@ -19,10 +19,9 @@ public class Model extends Observable {
 	}
 	
 	
-
 	
 	public void readStuff() {
-
+ 
 		String filename = "temp.txt";
 		String workingDirectory = System.getProperty("user.dir");
 			
